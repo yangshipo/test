@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>hello zepto</title>
+    <style type="text/css">
+        *{
+            font-size: 50px;
+        }
+        #touchs{
+            margin: 10px;width: 1000px;height: auto;min-height: 1000px;
+            border:1px solid #c2ddb6;border-radius: 2px;background: #c2ddb6;
+        }
+        #touchs li {list-style: none;}
+        .clear{
+            margin-left: 10px;display:inline-block;height: 24px;width: 40px;color:#fff;
+            font-size: 14px;line-height: 24px;background: #c2ddb6;text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<div id="touch_test">
+    <span class="clear">clear</span>
+    <ul id="touchs">
+    </ul>
+</div>
+
+
+<script type="text/javascript" src="../zepto.js"></script>
+<script type="text/javascript">
+    (function($){
+        $('#touchs').find('li').remove();
+        $('#touchs').bind("touchstart",function(event){
+            var touchpros =event.touches[0];
+            console.log(touchpros);
+            $('#touchs').append('<li>touchstart...</li>');
+        });
+        $('#touchs').bind("touchmove",function(){
+            $('#touchs').append('<li>touchmove...</li>');
+        });
+        $('#touchs').bind("touchend",function(){
+            $('#touchs').append('<li>touchend...</li>');
+        });
+        $('#touchs').bind("touchcancel",function(){
+            $('#touchs').append('<li>touchcancel...</li>');
+        });
+        $('.clear').bind("click",function(){
+            $('#touchs').find('li').remove();
+        });
+    })(Zepto);
+
+    /**
+     * 接下来也做得就是
+     *      1、写一个nodejs服务，使用手机访问。
+     */
+
+
+</script>
+</body>
+</html>
