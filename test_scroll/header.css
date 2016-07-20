@@ -1,0 +1,10 @@
+.header{
+    width: 1000px;
+    height: 300px;
+    margin: auto;
+    background-color: aqua;
+    font-size: 36px;
+    text-align: center;
+    /*text-align: center;*/
+    font-family: inherit;
+}

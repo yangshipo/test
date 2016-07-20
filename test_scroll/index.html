@@ -14,6 +14,12 @@
     $(document).ready(function () {
         $('#header').load('header.html');
         //Ajax也有一个.load(),jQuery会根据传递的参数来确定进行那个方法调用。
+
+        $(window).scroll( function(){
+
+                console.log( $(window).scrollTop() );
+
+        } );
     });
 </script>
 </body>
