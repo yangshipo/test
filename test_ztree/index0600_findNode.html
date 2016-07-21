@@ -2,8 +2,9 @@
 主题：find the node by param
 问题：
 原因：
-深究：ztree通过点击节点进行节点展开收起的操作都可以通过程序进行控制。怎么来控制？
-收获：
+深究：对象内的各个方法之间如何互调？各种搜索方法是怎么使用的。
+收获：关于时间对象，可以通过断点来查看里面的内容。
+        expand展开的意思。
 -->
 
 
@@ -16,14 +17,42 @@
 </head>
 <body>
 
-<div id="treeDemo" class="ztree"></div>
+<div id="treeDemo" class="ztree"></div> <br>
+value:<input id="value" type="text" name="value"> <br>
 
-<script type="text/javascript" src="../lib/jquery-1.4.4.min.js"></script>
+
+<script type="text/javascript" src="../lib/jquery-2.2.4.min.js"></script>
 <script type="text/javascript" src="../lib/ztree/jquery.ztree.all-3.5.js"></script>
 <script type="text/javascript">
     <!--
 
+    var nodeList = [];
+
+    var getFontCss = function (treeId, treeNode) {
+        return (!!treeNode.highlight) ? {color:"#A60000", "font-weight":"bold"} : {color:"#333", "font-weight":"normal"};
+    };
+
+    var updateNodes = function (highlight) {
+        var zTree = $.fn.zTree.getZTreeObj("treeDemo");
+        for( var i=0, l=nodeList.length; i<l; i++) {
+            nodeList[i].highlight = highlight;
+            zTree.updateNode(nodeList[i]);
+        }
+    };
+
     var setting = {
+
+        data: {
+            key: {
+                title: "t"
+            },
+            simpleData: {
+                enable: true
+            }
+        },
+        view: {
+            fontCss: getFontCss
+        },
 
         callback : {
             onClick : function (event, treeId, treeNode) {
@@ -31,50 +60,51 @@
             }
         }
     } ;
-
     var zNodes =[
-        {
-            name : '根节点1' ,
-            open : true ,
-            children : [
-                {name : '子节点1'}
-            ]
-        },{
-            name : '根节点2' ,
-            open : true ,
-            children : [
-                {name : '子节点1'}
-            ]
-        },{
-            name : '根节点3' ,
-            open : true ,
-            children : [
-                {name : '子节点1'}
-            ]
-        },{
-            name : '根节点4' ,
-            open : true ,
-            children : [
-                {name : '子节点1'}
-            ]
-        }
-
+        { id:1, pId:0, name:"节点搜索演示 1", t:"id=1", open:true},
+        { id:11, pId:1, name:"关键字可以是名字", t:"id=11"},
+        { id:12, pId:1, name:"关键字可以是level", t:"id=12"},
+        { id:13, pId:1, name:"关键字可以是id", t:"id=13"},
+        { id:14, pId:1, name:"关键字可以是各种属性", t:"id=14"},
+        { id:2, pId:0, name:"节点搜索演示 2", t:"id=2", open:true},
+        { id:21, pId:2, name:"可以只搜索一个节点", t:"id=21"},
+        { id:22, pId:2, name:"可以搜索节点集合", t:"id=22"},
+        { id:23, pId:2, name:"搜我吧", t:"id=23"},
+        { id:3, pId:0, name:"节点搜索演示 3", t:"id=3", open:true },
+        { id:31, pId:3, name:"我的 id 是: 31", t:"id=31"},
+        { id:32, pId:31, name:"我的 id 是: 32", t:"id=32"},
+        { id:33, pId:32, name:"我的 id 是: 33", t:"id=33"}
     ];
-
     var treeUtil = {
         getZTreeObj : function ( treeId ) {
             return $.fn.zTree.getZTreeObj( treeId );
         },
         getTreeDemo : function () {
-            return getZTreeObj('treeDemo');
+            return $.fn.zTree.getZTreeObj( 'treeDemo' );
+        },
+        searchNode : function (key ,value){
+            var treeObj = $.fn.zTree.getZTreeObj( 'treeDemo' );
+            treeObj.getNodeByParam(key,value);
         }
     };
 
-    var 
+
+    /**
+     * 搜索
+     */
+    var searchNode = function ( e ) {
+
+        //如何来设置filter
+        updateNodes(false);
+        nodeList = treeUtil.getTreeDemo().getNodesByParamFuzzy('name','可');
+        console.log( nodeList.length )
+        updateNodes(true);
+    };
 
     $(document).ready(function () {
         $.fn.zTree.init( $('#treeDemo'), setting, zNodes);
 
+        $('#value').bind("input", searchNode);
     });
 
     //-->
