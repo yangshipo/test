@@ -1,0 +1,60 @@
+<!--
+问题：<div id="treeDemo" class="ztree"></div> 写这个标签的时候，没有添加class="ztree"；这个class定义在zTreeStyle.css里面。
+原因：使用插件的经验不足。
+深究：这个控件是使用那种jQuery控件方法写的。与之前写jQuery插件有关系吗？
+-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link type="text/css" rel="stylesheet" href="../lib/ztree/css/zTreeStyle/zTreeStyle.css" >
+    <title>ztree</title>
+</head>
+<body>
+
+<div id="treeDemo" class="ztree"></div>
+
+<script type="text/javascript" src="../lib/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="../lib/ztree/jquery.ztree.all-3.5.js"></script>
+<script type="text/javascript">
+    <!--
+    var setting = { };
+
+    var zNodes =[
+        {
+            name : '根节点1' ,
+            open : true ,
+            children : [
+                {name : '子节点1'}
+            ]
+        },{
+            name : '根节点2' ,
+            open : true ,
+            children : [
+                {name : '子节点1'}
+            ]
+        },{
+            name : '根节点3' ,
+            open : true ,
+            children : [
+                {name : '子节点1'}
+            ]
+        },{
+            name : '根节点4' ,
+            open : true ,
+            children : [
+                {name : '子节点1'}
+            ]
+        }
+
+    ];
+
+    $(document).ready(function(){
+        $.fn.zTree.init($("#treeDemo"), setting, zNodes);
+    });
+    //-->
+</script>
+</body>
+</html>

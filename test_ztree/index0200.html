@@ -1,0 +1,70 @@
+<!--
+问题：
+原因：
+深究：标准的js event对象是什么？包含什么内容？treeId是不是每次都是div的Id，如何自己添加treeNode的属性。
+收获：node对象是就是文档上面的treeNode节点数据详解里面的内容。
+-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link type="text/css" rel="stylesheet" href="../lib/ztree/css/zTreeStyle/zTreeStyle.css" >
+    <title>ztree</title>
+</head>
+<body>
+
+<div id="treeDemo" class="ztree"></div>
+
+<script type="text/javascript" src="../lib/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="../lib/ztree/jquery.ztree.all-3.5.js"></script>
+<script type="text/javascript">
+    <!--
+    var setting = {
+        callback : {
+            onClick : function (event, treeId, treeNode) {
+                console.log( 'event = ' + event );
+                console.log( 'treeId = ' + treeId );
+                console.log( 'treeNode = ' + treeNode );
+                console.log( 'treeNode.checked = ' + treeNode.checked );
+            }
+        }
+    };
+
+    var zNodes =[
+        {
+            name : '根节点1' ,
+            open : true ,
+            children : [
+                {name : '子节点1'}
+            ]
+        },{
+            name : '根节点2' ,
+            open : true ,
+            children : [
+                {name : '子节点1'}
+            ]
+        },{
+            name : '根节点3' ,
+            open : true ,
+            children : [
+                {name : '子节点1'}
+            ]
+        },{
+            name : '根节点4' ,
+            open : true ,
+            children : [
+                {name : '子节点1'}
+            ]
+        }
+
+    ];
+
+    $(document).ready(function(){
+        $.fn.zTree.init($("#treeDemo"), setting, zNodes);
+    });
+    //-->
+</script>
+</body>
+</html>

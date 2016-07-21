@@ -1,0 +1,79 @@
+<!--
+主题：test for ztree'setting.
+问题：
+原因：
+深究：问严政api里面的[]是什么意思
+收获：包含"icon"的都是关于小图标的。
+-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link type="text/css" rel="stylesheet" href="../lib/ztree/css/zTreeStyle/zTreeStyle.css" >
+    <title>ztree</title>
+</head>
+<body>
+
+<div id="treeDemo" class="ztree"></div>
+
+<script type="text/javascript" src="../lib/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="../lib/ztree/jquery.ztree.all-3.5.js"></script>
+<script type="text/javascript">
+    <!--
+
+    var setting = {
+
+        //用于异步获取数据
+        async : {
+
+        },
+
+        callback : {
+            onClick : function (event, treeId, treeNode) {
+                console.log( 'event = ' + event );
+                console.log( 'treeId = ' + treeId );
+                console.log( 'treeNode = ' + treeNode );
+                console.log( 'treeNode.checked = ' + treeNode.checked );
+            }
+        },
+
+        view :{
+            showLine :true ,
+            fontCss : {color : 'red'}
+        }
+    } ;
+
+    var nodes = [
+        {
+            name : '根节点',
+            open : true ,
+            children : [
+                {name : '子节点'}
+            ],
+            url : 'http://www.winployee.com',
+            icon : '../lib/ztree/css/zTreeStyle/img/diy/2.png'
+        },{
+            name : '根节点',
+            open : true ,
+            children : [
+                {name : '子节点'}
+            ]
+        },{
+            name : '根节点',
+            open : true ,
+            children : [
+                {name : '子节点'}
+            ]
+        }
+    ];
+
+    $(document).ready(function () {
+        $.fn.zTree.init( $('#treeDemo'), setting, nodes );
+    })
+
+    //-->
+</script>
+</body>
+</html>

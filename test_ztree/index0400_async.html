@@ -1,0 +1,57 @@
+<!--
+主题：async
+问题：使用zTree方法进行数据加载不会呦
+原因：
+深究：zTreeObj内的方法怎么使用?
+收获：
+-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link type="text/css" rel="stylesheet" href="../lib/ztree/css/zTreeStyle/zTreeStyle.css" >
+    <title>ztree</title>
+</head>
+<body>
+
+<div id="treeDemo" class="ztree"></div>
+
+<script type="text/javascript" src="../lib/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="../lib/ztree/jquery.ztree.all-3.5.js"></script>
+<script type="text/javascript">
+    <!--
+
+    var setting = {
+
+        //用于异步获取数据
+        async : {
+            enable : true ,
+            url : 'nodes.json'
+
+        },
+
+        callback : {
+            onClick : function (event, treeId, treeNode) {
+                console.log( 'event = ' + event );
+                console.log( 'treeId = ' + treeId );
+                console.log( 'treeNode = ' + treeNode );
+                console.log( 'treeNode.checked = ' + treeNode.checked );
+            }
+        },
+
+        view :{
+            showLine :true ,
+            fontCss : {color : 'red'}
+        }
+    } ;
+
+    $(document).ready(function () {
+        $.fn.zTree.init( $('#treeDemo'), setting);
+    })
+
+    //-->
+</script>
+</body>
+</html>
