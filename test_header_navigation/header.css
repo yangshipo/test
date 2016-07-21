@@ -1,10 +1,44 @@
 .header{
     width: 1000px;
     height: 300px;
-    margin: auto;
+    /*margin: auto;*/
     background-color: aqua;
     font-size: 36px;
-    text-align: center;
     /*text-align: center;*/
     font-family: inherit;
 }
+
+
+.header-ul{
+    /*去除远点*/
+    list-style-type:none;
+    margin:0;
+    padding:0;
+    padding-top:6px;
+    padding-bottom:6px;
+}
+
+
+
+.header-ul-2{
+    list-style-type:none;
+    display:inline;
+    display: block;
+}
+.header-ul-2 li{
+
+}
+.header-li .header-a:hover  .header-ul-2{
+    display: block;
+}
+
+.header-li{
+    display:inline;
+}
+
+
+.header-li ul{
+
+}
+
+/*定义连接的四种状态*/

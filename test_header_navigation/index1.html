@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        /*设置上一级菜单的样式*/
+        html,body
+        {
+            width:100%;
+            height:100%;
+            /*消除网页的边界*/
+            margin:0px;
+            padding:0px;
+            border-style:none;
+        }
+        #menu
+        {
+            width:225px;
+            height:320px;
+            background-color:RGB(216,216,216);
+            padding:0px;
+            margin:0px;
+        }
+        /*去掉列表前的圆点*/
+        #menu ul
+        {
+            width:225px;
+            list-style-type:none;
+            padding:0px;
+            margin:0px; /*消除左侧间隙*/
+        }
+        #menu ul li
+        {
+            width:225px;/*填充满整个边栏*/
+            /*
+            margin:0px;
+            padding:0px;
+            */
+        }
+        #menu ul li a
+        {
+            display:block; /*先转化成块级元素*/
+            color:Gray;
+            text-align:left;
+            text-decoration:none;
+            padding:10px 0px 10px 30px;/*设置距离左侧的边栏和上边距*/
+            font-size:14px;
+        }
+        #menu ul li a:hover
+        {
+            color:Orange;
+            text-align:left;
+            text-decoration:none;
+            padding:10px 0px 10px 30px;
+            font-size:14px;
+        }
+        /*设置子菜单的样式*/
+        #menu ul li ul
+        {
+            list-style-type:none;
+            /*
+            padding:0px;
+            margin:0px;
+            */
+        }
+        #menu ul li ul li
+        {
+            width:225px; /*通过设置宽度来填充*/
+        }
+        #menu ul li ul li a
+        {
+            display:block;
+            /*此处可以通过设置来调整相关的样式*/
+            padding:6px 0px 6px 60px;
+            text-align:left;
+            text-decoration:none;
+            font-size:12px;
+        }
+        #menu ul li ul li a:hover
+        {
+            padding:6px 0px 6px 60px;
+            text-align:left;
+            text-decoration:none;
+            font-size:12px;
+            color:Black;
+            background-color:#CD2626;
+        }
+    </style>
+</head>
+<body onload="loadFun()">
+<form id="form1" runat="server">
+    <div id="menu">
+        <ul>
+            <li><a href="#" onclick="Show('rule')">相关法规</a>
+                <ul id="rule">
+                    <li><a href="#">Adobe Reader</a></li>
+                    <li><a href="#">Foxit Reader</a></li>
+                    <li><a href="#">操作员计算机IE设置</a></li>
+                    <li><a href="#">电子签章办理须知</a></li>
+                </ul>
+            </li>
+            <li><a href="#" onclick="Show('load')">相关下载</a>
+                <ul id="load">
+                    <li><a href="#">Adobe Reader</a></li>
+                    <li><a href="#">Foxit Reader</a></li>
+                    <li><a href="#">操作员计算机IE设置</a></li>
+                </ul>
+            </li>
+            <li><a href="#" onclick="Show('info')">公司简介</a>
+                <ul id="info">
+                    <li><a href="#">Adobe Reader</a></li>
+                    <li><a href="#">Foxit Reader</a></li>
+                </ul>
+            </li>
+            <li><a href="#" onclick="Show('window')">连接窗口</a>
+                <ul id="window">
+                    <li><a href="#">Adobe Reader</a></li>
+                    <li><a href="#">Foxit Reader</a></li>
+                </ul>
+            </li>
+            <li><a href="#" onclick="Show('phone')">连接电话</a>
+                <ul id="phone">
+                    <li><a href="#">Adobe Reader</a></li>
+                    <li><a href="#">Adobe Reader</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</form>
+<script type="text/javascript">
+    /*网页加载时触发的函数*/
+    function loadFun() {
+    //获取<ul></ul>的所有子节点<li>节点5个
+        var array = document.getElementsByTagName("ul").item(0).childNodes;
+    //遍历子节点
+        for (var i = 0; i < array.length; i++) {
+    //获取<li></li>标签的子节点
+            var childnodes = array[i].childNodes;
+            for (var j = 0; j < childnodes.length; j++) {
+    //如果碰到主菜单中的<ul>标签就隐藏该子菜单的下拉菜单
+                if (childnodes[j].tagName == "UL") {
+                    childnodes[j].style.display = "none";
+                }
+            }
+        }
+    }
+
+    /*点击按钮是触发的事件*/
+    var arrays = new Array("rule","load","info","window","phone");
+    function Show(tagId) {
+        for (var i = 0; i < arrays.length; i++) {
+            if (arrays[i] == tagId) {
+            //设置全新的背景颜色
+                document.getElementById(arrays[i]).parentNode.style.backgroundColor = "RGB(237,237,237)";
+                document.getElementById(arrays[i]).style.display = "block";
+            }
+            else {
+                //将背景颜色还原
+                document.getElementById(arrays[i]).parentNode.style.backgroundColor = "RGB(216,216,216)";
+                document.getElementById(arrays[i]).style.display = "none";
+            }
+        }
+    }
+</script>
+</body>
+</html>
