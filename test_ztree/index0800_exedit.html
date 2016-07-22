@@ -1,8 +1,8 @@
 <!--
-主题：exchecked
+主题：exedit
 问题：
 原因：
-深究：官网上关于小圆圈异步加载。
+深究：
 收获：
 -->
 
@@ -36,37 +36,9 @@
         callback : {
             onClick : function (event, treeId, treeNode) {
 
-                //改变节点checked属性
-                treeNode.checked = !treeNode.checked ;
-
-                //在视图中更新checkBox的显示
-                var treeObj = $.fn.zTree.getZTreeObj( treeId );
-                treeObj.updateNode(treeNode , false);
-
-                //获取当前所有被选中的节点
-                var checkedNodes = treeObj.getCheckedNodes(true);
-                console.log(checkedNodes.length);
-
-                //js遍历当前数组
-                for ( index in checkedNodes ) {
-                    console.log( checkedNodes[index].name );
-                }
-
-                //jquery遍历
-//                $.each(checkedNodes , function (n , node) {
-//                    console.log(node.name);
-//                })
-
-
             }
-        },
-        check : {
-            enable: true ,
-            chkboxType: { "Y": "ps", "N": "ps" }
-        },
-        key : {
-            checked : 'checked'
         }
+
     } ;
     var zNodes =[
         { id:1, pId:0, name:"节点搜索演示 1", t:"id=1", open:true},
