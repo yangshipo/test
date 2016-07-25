@@ -1,0 +1,37 @@
+<!--这里弹出的是一个iframe层-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css" rel="script">
+        body .demo-class .layui-layer-title{background:#c00; color:#fff; border: none;}
+        body .demo-class .layui-layer-btn{border-top:1px solid #E9E7E7}
+        body .demo-class .layui-layer-btn a{background:#333;}
+        body .demo-class .layui-layer-btn .layui-layer-btn1{background:#999;}
+    </style>
+</head>
+<body>
+
+<button id="test" >小小提示层</button>
+
+<script type="text/javascript" src="../../../lib/jquery-2.2.4.min.js"></script>
+<script type="text/javascript" src="../../../lib/layer/layer.js"></script>
+<script type="text/javascript">
+
+    $('#test').on('click' , function () {
+        layer.open({
+            type : 1,
+            title : 'test',
+            shadeClose : true,
+            content : 'adsadsfsdaf',
+            skin : 'demo-class',
+            area : ['600px ','360px'],
+//            offset : ['100px','100px']  //位置
+        })
+    })
+
+</script>
+</body>
+</html>

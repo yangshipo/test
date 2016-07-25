@@ -1,0 +1,31 @@
+<!--这里弹出的是一个iframe层-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css" rel="script">
+        html{
+            font-family: inherit;
+        }
+    </style>
+</head>
+<body>
+
+<button id="test" >小小提示层</button>
+
+<script type="text/javascript" src="../../../lib/jquery-2.2.4.min.js"></script>
+<script type="text/javascript" src="../../../lib/layer/layer.js"></script>
+<script type="text/javascript">
+
+    $('#test').on('click' , function () {
+        var ii = layer.load();
+        setTimeout(function(){
+            layer.close(ii)
+        },2000)
+    })
+
+</script>
+</body>
+</html>
