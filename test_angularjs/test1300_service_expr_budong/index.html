@@ -1,0 +1,47 @@
+<!--
+angularjs通过$parse这个内部服务来进行表达式的计算。
+手动计算，将$scope注入到控制器中
+
+$watch用于检测变化：$scope.$watch(),关系到数据数据绑定是如何工作的。
+
+首先生成多个$watch，形成$watch list.
+然后$digest进行循环处理$watch,每一个$digest包含两个小的循环：一个处理evalAsync队列，另一个处理$watch队列。
+    对于$watch的处理主要是用来询问值是多少？是否有变化？这就是所谓的dirty-checking。这个过程一直循环到所有的$watch都没有变化位置。
+    然后，浏览器拿回控制权，更新与新值相应部分的DOM。
+    效率：每一次微小的变化都会执行一次所有的$watch变化。
+
+http://www.angularjs.cn/A0a6
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body ng-app="myModule" >
+
+    <div ng-controller="myController">
+        <input ng-model="expr" type="text" placeholder="enter an expression" />
+        <!--<h2>{{expr}}</h2>-->
+        <h2>{{ parseValue }}</h2>
+    </div>
+
+</body>
+<script type="text/javascript" src="../../lib/angular.js"></script>
+<script type="text/javascript">
+    var myApp = angular.module('myModule',[])
+            .controller('myController', ['$scope', '$log', '$parse',function($scope, $log, $parse){
+                $scope.$watch('expr', function (newVal, oldVal, scope) {
+                    if ( newVal != oldVal ){
+
+                        //用该表达式设置parseFun
+                        //这个地方拿没有执行why？
+                        var parseFun = $parse(newVal);
+                        $scope.parseValue = parseFun(scope);
+                        $log.log($scope.parseValue);
+                    }
+                })
+            }]);
+</script>
+</html>

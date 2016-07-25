@@ -1,0 +1,42 @@
+<!--
+自定义过滤器
+过程：传入一个参数，返回一个结果。
+function () {
+        return function ( input ) {
+            return ;
+        }
+    }
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body ng-app="myModule" >
+    <div ng-controller="myController">
+        <input type="text" placeholder="0" ng-model="test" />
+        {{ test | toMsg }}<br>
+        <div ng-bind="test | toMsg"></div>
+    </div>
+</body>
+<script type="text/javascript" src="../../lib/angular.js"></script>
+<script type="text/javascript">
+    var myApp = angular.module('myModule',[])
+            //最外面一层的函数起到包含作用。
+            .filter('toMsg', function(){
+                return function ( input ) {
+                    if (input == '0'){
+                        return '没有数据';
+                    }else{
+                        return '打卡成功';
+                    }
+                }
+            })
+            .controller('myController', ['$scope','$filter',function($scope, $filter){
+                $scope.date = new Date();
+            }]);
+
+</script>
+</html>

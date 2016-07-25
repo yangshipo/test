@@ -1,0 +1,25 @@
+<!--
+filter：格式化需要展示给用户的数据。
+使用方法：1、在{{}}内通过使用|符号调用过滤器。
+         2、通过$filter来调用过滤器。
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body ng-app="myModule" >
+    <div ng-controller="myController">
+        {{name}}
+    </div>
+</body>
+<script type="text/javascript" src="../../lib/angular.js"></script>
+<script type="text/javascript">
+    var myApp = angular.module('myModule',[])
+            .controller('myController', ['$scope','$filter',function($scope, $filter){
+                $scope.name = $filter('lowercase')('YHHHKK');
+            }]);
+</script>
+</html>
