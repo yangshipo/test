@@ -14,7 +14,7 @@ http.createServer(function(req, res){
         });
         res.end('About us\n');
     } else if (pathname === '/redirect') {
-        // ÖØ¶¨Ïò
+        // ï¿½Ø¶ï¿½ï¿½ï¿½
         res.writeHead(302, {'Location':'/'});
         res.end();
     } else{
