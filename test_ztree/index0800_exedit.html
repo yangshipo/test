@@ -1,5 +1,5 @@
 <!--
-主题：exedit
+主题：exedit:drag
 问题：
 原因：
 深究：
@@ -34,9 +34,31 @@
             }
         },
         callback : {
-            onClick : function (event, treeId, treeNode) {
+            //节点点击事件
+            onClick : function (event, treeId, treeNode) {},
 
+            onDrag : function (event, treeId, treeNodes) {
+                var treeObj = $.fn.zTree.getZTreeObj( 'treeDemo' );
+                var allNodes = treeObj.getNodes();
+                console.log( allNodes );
+            },
+
+            //拖拽事件
+            onDrop : function (event, treeId, treeNodes, targetNode, moveType, isCopy) {
+                //获取拖拽以前的整个tree的数据
+                var treeObj = $.fn.zTree.getZTreeObj( 'treeDemo' );
+                var allNodes = treeObj.getNodes();
+                console.log( allNodes );
             }
+
+
+
+    },
+        edit : {
+            drag : {
+                isCopy : true
+            },
+            enable : true
         }
 
     } ;
