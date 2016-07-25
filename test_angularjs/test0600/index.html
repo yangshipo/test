@@ -1,0 +1,37 @@
+<!--
+解决了在同一个controller下面同一个directive有多个运用的时候如何对各个directive的运行环境进行隔离？
+关于scope还需要再看，官网的内容妈的卡不懂啊，全特么的英语。
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body ng-app="myModule" ng-controller="myCtrl">
+    <div>
+        <my-hello info="name1"></my-hello>
+        <my-hello info="name2"></my-hello>
+    </div>
+
+</body>
+<script type="text/javascript" src="../../lib/angular.js"></script>
+
+<script type="text/javascript">
+    var myModule = angular.module('myModule', [])
+            .controller('myCtrl',function ($scope) {
+                $scope.name1 = {name : 'yangshipo'};
+                $scope.name2 = {name : 'lishihua' };
+            })
+            .directive('myHello', function () {
+                return {
+                    restrict : 'E' ,
+                    scope : {
+                        customerInfo: '=info'
+                    } ,
+                    templateUrl :'template/customer-hello.html'
+                }
+            })
+</script>
+</html>

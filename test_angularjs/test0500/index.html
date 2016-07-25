@@ -1,0 +1,40 @@
+<!--
+directive所依附的上下文($scope)是在其所在的controller的$scope
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body ng-app="myModule" ng-controller="myCtrl">
+    <div ng-controller="myCtrl">
+        <my-hello></my-hello>
+    </div>
+
+    <div ng-controller="myCtrls">
+        <my-hello></my-hello>
+    </div>
+
+</body>
+<script type="text/javascript" src="../../lib/angular.js"></script>
+
+<script type="text/javascript">
+    var myModule = angular.module('myModule', [])
+            .controller('myCtrl',function ($scope) {
+                $scope.name = 'yangshipo';
+            })
+            .controller('myCtrls', function ($scope) {
+                $scope.name = 'lishihua';
+            })
+            .directive('myHello', function () {
+                return {
+                    restrict : 'E' ,
+                    templateUrl : function(elem, attr){
+                        return 'template/customer-hello.html';
+                    }
+                }
+            })
+</script>
+</html>

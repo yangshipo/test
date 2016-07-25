@@ -1,0 +1,28 @@
+<!--
+默认情况下是把指令当标签的属性使用
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body ng-app="myModule" ng-controller="myCtrl">
+    {{name}}
+    <div my-hello></div>
+
+</body>
+<script type="text/javascript" src="../../lib/angular.js"></script>
+
+<script type="text/javascript">
+    var myModule = angular.module('myModule', [])
+            .controller('myCtrl',function ($scope) {
+                $scope.name = 'yangshipo';
+            }).directive('myHello',function () {
+                return {
+                    template : '<div>hello</div>'
+                }
+            })
+</script>
+</html>

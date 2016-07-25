@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body ng-app="myModule" ng-controller="myCtrl">
+    {{name}}
+</body>
+<script type="text/javascript" src="../../lib/angular.js"></script>
+<script type="text/javascript">
+    var myModule = angular.module('myModule', [])
+            .controller('myCtrl',function ($scope) {
+                $scope.name = 'yangshipo';
+            })
+</script>
+</html>

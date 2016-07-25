@@ -1,0 +1,58 @@
+<!--
+transclude 翻译 嵌入
+在template的<div ng-transclude></div>会被嵌入direcative内的内容。
+1.ng-transclude指明的是一个插入的位置
+2.指令中标签里的元素都会先删除然后被嵌入包含后的内容所替换。
+
+replace
+replace : false 模板会被当做子元素插入到调用此指令的元素内部。
+
+指令可以理解成在特定的DOM元素上运行的函数，指令可以扩展这些元素的功能。
+restrict的选择：元素还是属性，用属性形式来给一个已经存在的元素添加数据或行为。
+                            在页面中可以通过元素方式创建新的指令可以将一些功能封装在元素内部。
+
+scope：1、scope:true 从负作用域继承一个新的作用于对象。
+       2、scope:false (默认)使用父作用域。
+       3、scope:{} 隔离作用域，主要用于创建客服用的组件。组件可以在未知上下文中使用，并且可以避免污染所处的外部作用域
+                    或不经意地污染内部作用域。
+                    绑定策略：1、本地绑定@。2、双向绑定&(父子同时变)。3、双向数据绑定。
+
+controller:
+compile:
+link:
+
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body ng-app="myModule" >
+    <div ng-controller="myCtrl">
+        title:<input type="text" ng-model="title"><br>
+        content:<input type="text" ng-model="content"><br>
+        <pane title="{{title}}">{{content}}</pane>
+    </div>
+</body>
+<script type="text/javascript" src="../../lib/angular.js"></script>
+
+<script type="text/javascript">
+    var myModule = angular.module('myModule', [])
+            .controller('myCtrl',function ($scope) {
+                $scope.name = 'yangshipo';
+            })
+            .directive('pane', function () {
+                return {
+                    restrict : 'E' ,
+                    transclude : true ,
+                    scope : { title : '@' } ,
+                    template :  '<div style="background-color: bisque;width: 200px;height: 200px">' +
+                                '   <div style="color: red">{{title}}</div>' +
+                                '   <div ng-transclude></div>' +
+                                '</div>'
+                }
+            })
+</script>
+</html>

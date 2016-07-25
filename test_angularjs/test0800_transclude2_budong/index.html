@@ -1,0 +1,54 @@
+<!--
+指令里面包含标签
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body ng-app="myModule" >
+    <div ng-controller="myCtrl">
+        title:<input type="text" ng-model="title"><br>
+        type:<input type="text" ng-model="type"><br>
+        time:<input type="text" ng-model="time"><br>
+        content:<textarea ng-model="content"></textarea>
+        <pane title="{{title}}">
+            <span class="time">time</span>
+                <p class="type">{{type}}<p>
+            <p class="content">{{text}}<p>
+        </pane>
+    </div>
+</body>
+<script type="text/javascript" src="../../lib/angular.js"></script>
+
+<script type="text/javascript">
+    var myModule = angular.module('myModule', [])
+            .controller('myCtrl',function ($scope) {
+                $scope.name = 'yangshipo';
+            })
+            .directive('pane', function() {
+                return {
+                    restrict: 'EA',
+                    template: '<div style="border: 1px solid black;"><div class="title" style="background-olor: gray">{{title}}</div></div>',
+                    replace: true,
+                    transclude: true,
+                    compile: function(element, attrs, transcludeFn) {
+                        return function (scope, element, attrs) {
+                            transcludeFn(scope, function(clone) {
+                                var title= element.find('title');
+                                var time = clone.find('.time');
+                                var type = clone.find('.type');
+                                var text= clone.find('.content');
+
+                                title.append(time);
+                                element.append(type);
+                                element.append(text)
+                            });
+                        };
+                    }
+                };
+            });
+</script>
+</html>
