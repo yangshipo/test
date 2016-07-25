@@ -1,0 +1,41 @@
+<!--
+service内的return返回一个函数（构造函数？）。
+这个函数可以在使用这个service的地方直接使用。
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body ng-app="myModule" >
+
+<div ng-controller="myController">
+    <input type="text" ng-init="msg='test'" ng-model="msg"/>
+    <button  ng-click="callNotify(msg)">button</button>
+</div>
+
+</body>
+<script type="text/javascript" src="../../lib/angular.js"></script>
+
+<script type="text/javascript">
+    var myApp = angular.module('myModule',[])
+            .service('notify', ['$window',function(win){
+                var msgs = [];
+                return function (msg) {
+                    win.console.log( msg );
+                    msgs.push(msg);
+                    if(msgs.length == 3 ){
+                        win.console.log( msgs.join('\n') );
+                        msgs = [];
+                    }
+                }
+            }])
+            .controller('myController', ['$scope', 'notify',function($scope, notify){
+                $scope.callNotify = function (msg) {
+                    notify(msg);
+                }
+            }]);
+</script>
+</html>

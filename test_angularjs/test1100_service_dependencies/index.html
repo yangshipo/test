@@ -1,0 +1,37 @@
+<!--
+
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body ng-app="myModule" >
+
+<div ng-controller="myController">
+    please press F12 to see the console window
+</div>
+
+</body>
+<script type="text/javascript" src="../../lib/angular.js"></script>
+
+<script type="text/javascript">
+    var myApp = angular.module('myModule',[])
+            .service('showtime', ['$interval','$log',function($interval, $log){
+                var showtime = function () {
+                    $interval(function () {
+                        $log.log( new Date());
+                    },1000);
+                };
+
+                return function () {
+                    showtime()
+                }
+            }])
+            .controller('myController', ['$scope', 'showtime',function($scope, showtime){
+                showtime();
+            }]);
+</script>
+</html>
