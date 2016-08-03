@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .parent{
+            width: 200px;
+            height: auto;
+        }
+        .children{
+            width: 150px;
+            height: 150px;
+            margin: 10px;
+            display: none;
+        }
+        .groundson{
+            width: 100px;
+            height: 100px;
+            margin: 10px;
+            background-color: #00B83F;
+        }
+    </style>
+</head>
+<body>
+<div class="parent">
+    <div class="children">
+        <span></span>
+    </div>
+    <div class="children">ABCDE</div>
+    <div class="children">111</div>
+    <div class="children"></div>
+</div>
+
+</body>
+<script type="application/javascript" src="../../lib/jquery-2.2.4.min.js"></script>
+<script type="application/javascript">
+
+    $(function () {
+            $('.parent').css('background-color','red')
+        }
+    );
+    $(function () {
+            $('.children:hidden').css('background-color','#666666').show();
+            console.log( $('.children:hidden').length )
+        }
+    );
+
+//    $(function () {
+//                $('#children1 ~ div').css('background-color','#666666')
+//            }
+//    );
+</script>
+</html>
