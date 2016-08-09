@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>manage image</title>
+    <link type="text/css" rel="script" href="../../lib/bootstrap/bootstrap.min.css" />
+    <style>
+        .image-size{
+            height: 50px;
+            width: 100px;
+        }
+        .clsImg{
+            position: absolute; /*绝对定位*/
+            border: solid 1px #ccc;
+            padding: 3px;
+            width: 120px;
+            height: 80px;
+            background-color: #eee;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<h1>全选有问题，但是又不知道是什么问题，</h1>
+<table style="border:1px solid red" >
+        <tr>
+            <th>选项</th><th>编号</th><th>封面</th><th>购书人</th><th>性别</th><th>购书价</th>
+        </tr>
+        <tr id="0">
+            <td><input type="checkbox" value="0"/></td><td>0001</td>
+            <td><img class="image-size" src="../../images/beautiful1.jpg"></td>
+            <td>李小明</td><td>男</td><td>35.60元</td>
+        </tr>
+        <tr id="1">
+            <td><input type="checkbox" value="1"/></td>
+            <td>0001</td>
+            <td><img class="image-size" src="../../images/beautiful2.jpg"></td>
+            <td>刘明明</td>
+            <td>男</td>
+            <td>35.60元</td>
+        </tr>
+        <tr id="2">
+            <td><input type="checkbox" value="2"/></td>
+            <td>0001</td>
+            <td><img class="image-size" src="../../images/beautiful3.jpg"></td>
+            <td>张小星</td>
+            <td>男</td>
+            <td>35.60元</td>
+        </tr>
+</table>
+<img id="imgTip" class="clsImg">
+<label><input id="checkedAll" type="checkbox" >全选</label>
+<button>删除</button>
+<script type="application/javascript" src="../../lib/jquery-2.2.4.min.js"></script>
+<script type="application/javascript" >
+    /**
+     * 1、变色   选择器
+     * 2、图片预览   事件
+     * 1、删除     *
+     */
+    $(function () {
+        $('table tr:nth-child(odd)').css('background-color','#eee')
+
+        $('#checkedAll').click(function (e) {
+            if(this.checked){
+                //单选框被选中
+                $('td  input[type=checkbox]').attr('checked',true)
+            } else {
+                $('td  input[type=checkbox]').attr('checked',false)
+            }
+        })
+
+        $('button').click(function () {
+            var intL = $('table tr td input:checked').length;
+
+            if(intL != 0){
+                $('table tr td input:checked').each(function (index) {
+                    if(this.checked){
+                        $('table tr[id='+this.value+']').remove()
+                    }
+                })
+            }
+
+        })
+
+        $('img').mousemove(function (e) {
+            $('#imgTip').attr('src',this.src)
+                    .css({'top':e.pageY+'px', 'left':e.pageX+'px'})
+                    .show(300)
+        })
+
+        $('img').mouseout(function (e) {
+            $('#imgTip').hide()
+        })
+
+
+
+        $('img').on('click',function (eventObject) {
+            $(eventObject).remove()
+        })
+    })
+</script>
+</body>
+</html>

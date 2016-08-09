@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css" rel="script">
+        .parent1{height: 300px;width: 300px;background-color: #00B83F}
+        .parent2{height: 300px;width: 300px;background-color: rebeccapurple}
+        .children1{height: 100px;width: 100px;background-color: bisque;margin-left: 100px}
+        .children2{height: 100px;width: 100px;background-color: gold;margin-left: 100px}
+        .children3{height: 100px;width: 100px;background-color: green;margin-left: 100px}
+        .children1{}
+    </style>
+</head>
+<body>
+<p>最喜爱的体育运动：<span>羽毛球</span></p>
+<p>最爱看那个类型的图书：<span>网络、技术</span></p>
+
+<script type="application/javascript" src="../../lib/jquery-2.2.4.min.js"></script>
+<script type="application/javascript">
+
+    $(function () {
+        $('p').wrapInner('<div style="background-color: #2D93CA"></div>')
+    })
+
+</script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css" rel="script">
+        .parent1{height: 300px;width: 300px;background-color: #00B83F}
+        .parent2{height: 300px;width: 300px;background-color: rebeccapurple}
+        .children1{height: 100px;width: 100px;background-color: bisque;margin-left: 100px}
+        .children2{height: 100px;width: 100px;background-color: gold;margin-left: 100px}
+        .children3{height: 100px;width: 100px;background-color: green;margin-left: 100px}
+        .children1{}
+    </style>
+</head>
+<body>
+<div class="parent1">
+    <div class="children1"></div>
+    <div class="children2"></div>
+</div>
+<div class="parent2">22</div>
+
+<script type="application/javascript" src="../../lib/jquery-2.2.4.min.js"></script>
+<script type="application/javascript">
+
+    $(function () {
+        var newdiv = $()
+
+        $('.parent1').insertAfter( $('.parent2') )
+    })
+
+</script>
+</body>
+</html>
