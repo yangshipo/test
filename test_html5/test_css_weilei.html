@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        input{
+            outline:medium ;
+            border: none;
+            width: auto;
+            height: 20px;
+            border: solid #00B83F 1px;
+        }
+        input:focus{
+            border-color: red ;
+        }
+        input:hover{
+            border-color: #1b6d85;
+        }
+        a{
+            font-size: 14px;
+            display: block;
+        }
+        a:hover{
+            font-size: 18px;
+        }
+        p:first-child{
+            font-weight: bold;
+        }
+        li:first-child{
+            text-transform: uppercase;
+        }
+        input[type=file]{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <input type="text">
+    <a href="#">这个是我们公司的官网，没事可以经常去看看！</a>
+    <a href="#">这个是我们公司的官网，没事可以经常去看看！</a>
+    <a href="#">这个是我们公司的官网，没事可以经常去看看！</a>
+    <a href="#">这个是我们公司的官网，没事可以经常去看看！</a>
+    <a href="#">这个是我们公司的官网，没事可以经常去看看！</a>
+    <a href="#">这个是我们公司的官网，没事可以经常去看看！</a>
+    <a href="#">这个是我们公司的官网，没事可以经常去看看！</a>
+    <div>
+        <p>these are the necessary steps:</p>
+        <ul>
+            <li>Insert key</li>
+            <li>Turn key <strong>clockwise</strong></li>
+            <li>Push accelerator</li>
+        </ul>
+        <p>Do <em>not</em> push the brake at the same time as the accelerator</p>
+    </div>
+    <input id="files" type="file" accept="image/*" multiple>
+    <a href="#" id="fileselect">选择文件</a>
+<script type="text/javascript">
+    (function () {
+        let fileSelect = document.getElementById('fileselect'),
+            filelist = document.getElementById('files')
+        fileSelect.addEventListener('click',function (e) {
+            if( filelist ) {
+                filelist.click()
+            }
+            e.preventDefault()
+        },false)
+        filelist.addEventListener('change',function () {
+            var reader = new FileReader()
+//            reader.onload = (function () {
+//
+//            })()
+            reader.onprogress=function (e) {
+                console.log( (e.loaded/e.total*100).toFixed(2)+'%' )
+            }
+            reader.readAsDataURL(this.files[0])
+        },false)
+
+    })()
+</script>
+</body>
+</html>

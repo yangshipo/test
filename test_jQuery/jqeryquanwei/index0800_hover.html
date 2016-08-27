@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css" rel="script">
+        .parent1{height: 300px;width: 300px;background-color: rebeccapurple}
+        .parent2{height: 300px;width: 300px;background-color: aquamarine}
+        .children1{height: 100px;width: 100px;background-color: bisque;margin-left: 100px}
+        .children2{height: 100px;width: 100px;background-color: gold;margin-left: 100px}
+        .children3{height: 100px;width: 100px;background-color: green;margin-left: 100px}
+        .title{width: 298px;height: auto;text-align: center;border: solid 1px rebeccapurple}
+        .content{display: none}
+    </style>
+</head>
+<body>
+<div class="parent2">
+    <h3 class="title">jQuery介绍</h3>
+    <p class="content">jquery是由美国人发明的。jquery是由美国人发明的。' +
+        'jquery是由美国人发明的。jquery是由美国人发明的。' +
+        'jquery是由美国人发明的。jquery是由美国人发明的。</p>
+</div>
+
+<script type="application/javascript" src="../../lib/jquery-2.2.4.min.js"></script>
+<script type="application/javascript">
+
+    $(function () {
+        //先生成一个内容的标签。
+        var content = $('p')
+
+        //然后添加
+        var title = $('h3')
+
+        var on = function () {
+            content.show(500)
+        }
+        var off = function () {
+            content.hide(500)
+        }
+
+        $('h3').hover(on,off);
+    })
+
+</script>
+</body>
+</html>

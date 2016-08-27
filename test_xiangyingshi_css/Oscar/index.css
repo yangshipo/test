@@ -1,0 +1,74 @@
+*{
+    font-size: 18px;
+    font-family: "Microsoft YaHei UI";
+
+}
+
+.content-wrapper{
+    width: 960px;
+    mix-height: 1000px;
+    margin: auto;
+    /*background-color: #888888;*/
+}
+
+#wrapper{
+    margin: auto;
+    width: 100%;
+}
+
+#header{
+    width: 940px;
+    margin: auto;
+    background-color: #779307;
+    min-height: 50px;
+}
+#navigation ul li{
+    display: inline-block;
+}
+#sidebar{
+    margin: 0px 10px;
+    float: left;
+    background-color: #fe9c00;
+    width: 220px;
+    min-height: 400px;
+}
+#content{
+    margin: 0px 10px;
+    float: right;
+    width: 700px;
+    background-color: #dedede;
+    min-height: 400px;
+}
+#footer{
+    margin: 0px 10px;
+    clear: both;
+    background-color: #663300;
+    width: 940px;
+    min-height: 50px;
+}
+
+@media screen and (max-width: 768px){
+
+    body{
+        /*background-color: red;*/
+    }
+
+    #content-wrapper{
+        width: 768px;
+    }
+
+    #wrapper{
+        width: 768px;
+    }
+
+    #header,#footer,#navigation{
+        width: 748px;
+    }
+
+    #content , #sidebar{
+        padding-right: 10px;
+        padding-left: 10px;
+        width: 728px;
+    }
+
+}

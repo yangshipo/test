@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css" rel="script">
+        .parent1{height: 300px;width: 300px;background-color: rebeccapurple}
+        .parent2{height: 300px;width: 300px;background-color: aquamarine}
+        .children1{height: 100px;width: 100px;background-color: bisque;margin-left: 100px}
+        .children2{height: 100px;width: 100px;background-color: gold;margin-left: 100px}
+        .children3{height: 100px;width: 100px;background-color: green;margin-left: 100px}
+        .title{width: 298px;height: auto;text-align: center;border: solid 1px rebeccapurple}
+        .content{display: none}
+        body{font-size: 13px}
+        img{border: solid 1px #ccc;
+            padding: 3px;}
+    </style>
+</head>
+<body>
+<img />
+
+</div>
+
+<script type="application/javascript" src="../../lib/jquery-2.2.4.min.js"></script>
+<script type="application/javascript">
+
+    $(function () {
+
+//
+        $('img').toggle(function () {
+            $('img').attr('src','../../images/beautiful1.jpg')
+            $('img').attr('title',this.src)
+
+        })
+
+
+    })
+
+</script>
+</body>
+</html>
